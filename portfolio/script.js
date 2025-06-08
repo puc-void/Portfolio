@@ -50,38 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', animateSkillBars);
     animateSkillBars();
     document.getElementById('current-year').textContent = new Date().getFullYear();
-    const taglineElement = document.getElementById('animated-tagline');
-   
-    let taglineIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typingSpeed = 100;
-    let deletingSpeed = 50;
-    let delayBetweenTaglines = 1500;
-
-    function typeWriter() {
-        const currentTagline = taglines[taglineIndex];
-
-        if (isDeleting) {
-            taglineElement.textContent = currentTagline.substring(0, charIndex - 1);
-            charIndex--;
-        } else {
-            taglineElement.textContent = currentTagline.substring(0, charIndex + 1);
-            charIndex++;
-        }
-
-        if (!isDeleting && charIndex === currentTagline.length) {
-            typingSpeed = delayBetweenTaglines;
-            isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            taglineIndex = (taglineIndex + 1) % taglines.length;
-            typingSpeed = 100;
-        }
-
-        const currentSpeed = isDeleting ? deletingSpeed : typingSpeed;
-        setTimeout(typeWriter, currentSpeed);
-    }
+    
     const nameElement = document.querySelector('#home h1');
     const originalNameText = "Hi, I'm MD RABIUL HOSSEN!";
     nameElement.textContent = "";
